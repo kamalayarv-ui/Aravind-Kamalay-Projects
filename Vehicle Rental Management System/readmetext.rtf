@@ -1,0 +1,18 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww29200\viewh18400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 This project, titled Vehicle Rental Management System, was developed by Aravind Kamalay (akamalay@buffalo.edu) and Rishika Reddy Thumma (rthumma@buffalo.edu) from the Department of Computer Science and Engineering at the University at Buffalo. The main goal of this project is to implement a fully normalized, efficient, and scalable relational database system for automobile rental management using PostgreSQL.\
+The database was constructed by manually creating tables through SQL DDL scripts. Each table was carefully designed with primary keys to uniquely identify records and foreign keys to maintain referential integrity between related tables. Cascading deletions were enforced where necessary, especially for dependent entities like rentals and payments. A total of 12 major tables were designed and created: rental_cost, registration, vehicle, location, address, drivinglicense, customer, ssn_info, employee, card_details, payment, and rental.\
+Data population was achieved using manual SQL INSERT statements. Over 3000 sample records were inserted into the database across various tables for testing purposes. No external CSV files or automated loaders were used; all data was inserted directly into PostgreSQL using hand-written scripts or stored procedures.\
+Beyond basic table creation, several advanced features were implemented. To handle transaction failures, a table named transaction_failure_log was created and a PL/pgSQL function called log_transaction_failure() was developed. Inside transaction blocks, EXCEPTION handlers were used to catch any failures, roll back changes, and log the error details. This ensured that database atomicity and consistency were preserved even during unexpected failures.\
+Several stored procedures were also built to automate common operations such as inserting new vehicles, updating vehicle details like odometer readings and usage status, deleting vehicles safely, and listing available vehicles. These procedures help minimize human errors, standardize database operations, and improve efficiency for repetitive tasks.\
+For query performance optimization, problematic queries were analyzed using EXPLAIN ANALYZE and bottlenecks were identified. Indexes were created on critical columns such as usage_status, designation, and odometer_reading to improve query performance. Additionally, unnecessary LEFT JOINs were replaced with INNER JOINs to optimize join operations and reduce memory overhead.\
+To recreate the project, one should connect to a PostgreSQL database, manually run the DDL scripts to create the tables, insert sample data using the provided SQL commands, create necessary indexes, define stored procedures, and perform the sample queries to verify correctness. Transaction failures can be simulated by intentionally causing primary key violations or constraint errors to observe logging behavior.\
+All tables were carefully normalized into Boyce-Codd Normal Form (BCNF) to eliminate redundancy, maintain data integrity, and ensure future scalability. The system was designed to be secure, scalable, and operationally robust, and no external tools or libraries were used for data import or processing.\
+}
