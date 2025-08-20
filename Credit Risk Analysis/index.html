@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Risk Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Modern and simple font */
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4; /* Light grey background */
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .nav {
+            background-color: #004466; /* Deep blue */
+            color: #ffffff;
+            padding: 12px 20px;
+            text-align: center;
+        }
+        .nav h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .main-container {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .model {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds shadow to the form container */
+            width: 80%;
+            max-width: 800px;
+        }
+        .form {
+            width: 100%;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+        }
+        .submit input {
+            background-color: #008000; /* Green background */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px; /* Rounded corners */
+        }
+        .submit input:hover {
+            background-color: #005700; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <section class="main">
+        <div class="nav">
+            <h1><a href="/">Credit Risk Prediction Model</a></h1>
+        </div>
+        <div class="main-container">
+            <div class="model">
+                <h1>Assess Credit Risk</h1>
+                <div class="form">
+                    <form action="/predict" method="post">
+                        <!-- Input groups -->
+                        <div class="group">
+    <label for="Occupation">Occupation:</label>
+    <select name="Occupation" id="Occupation" required>
+        <option value="Scientist">Scientist</option>
+        <option value="Engineer">Engineer</option>
+        <option value="Teacher">Teacher</option>
+        <option value="Doctor">Doctor</option>
+        <option value="Architect">Architect</option>
+        <option value="Entrepreneur">Entrepreneur</option>
+        <option value="Accountant">Accountant</option>
+        <option value="Mediamanager">Media Manager</option>
+        <option value="Lawyer">Lawyer</option>
+        <option value="Manager">Manager</option>
+        <option value="Mechanic">Mechanic</option>
+        <option value="Writer">Writer</option>
+        <option value="Musician">Musician</option>
+        <option value="Developer">Developer</option>
+        <option value="None" selected>None</option>
+    </select>
+</div>
+
+                        <div class="group">
+                            <label>Annual Income:</label>
+                            <input type="text" name="Annual_Income" placeholder="Ex: 340001" required>
+                        </div>
+                        <div class="group">
+                            <label>Number of Bank Accounts:</label>
+                            <input type="number" name="Num_Bank_Accounts" min="0" placeholder="3" required>
+                        </div>
+                        <div class="group">
+                            <label>Number of Credit Cards:</label>
+                            <input type="number" name="Num_Credit_Card" min="0" placeholder="2" required>
+                        </div>
+                        <div class="group">
+                            <label>Interest Rate:</label>
+                            <input type="text" name="Interest_Rate" placeholder="8" required>
+                        </div>
+                        <div class="group">
+    <label for="Type_of_Loan">Type of Loan:</label>
+    <select name="Type_of_Loan" id="Type_of_Loan" required>
+        <option value="Auto Loan">Auto Loan</option>
+        <option value="Creditbuilder Loan">Creditbuilder Loan</option>
+        <option value="Personal Loan">Personal Loan</option>
+        <option value="Home Equity Loan">Home Equity Loan</option>
+        <option value="Payday Loan">Payday Loan</option>
+        <option value="Student Loan">Student Loan</option>
+        <option value="Mortage Loan">Mortgage Loan</option> 
+        <option value="Other">Other</option>
+                <option value="None" selected>None</option>
+
+    </select>
+</div>
+
+                        <div class="group">
+                            <label>Number of Loans:</label>
+                            <input type="number" name="Num_of_Loan" min="0" placeholder="3" required>
+                        </div>
+                        <div class="group">
+                            <label>Days Delayed from Due Date:</label>
+                            <input type="number" name="Delay_from_due_date" min="0" placeholder="Ex: 3" required>
+                        </div>
+                        <div class="group">
+                            <label>Number of Delayed Payments:</label>
+                            <input type="number" name="Num_of_Delayed_Payment" min="0" placeholder="Ex: 4" required>
+                        </div>
+                        
+                        
+                        
+                        <div class="group">
+                            <label>Changed Credit Limit:</label>
+                            <input type="text" name="Changed_Credit_Limit" placeholder="Enter changed credit limit" required>
+                        </div>
+
+                        <div class="group">
+                            <label>Number of Credit Inquires:</label>
+                            <input type="text" name="Num_Credit_Inquiries" placeholder="Enter Number of Credit Inquires" required>
+                        </div>
+
+                        <div class="group">
+                            <label for="Outstanding_Debt">Outstanding Debt:</label>
+                            <input type="text" id="Outstanding_Debt" name="Outstanding_Debt" required>
+                        </div>
+                        <div class="group">
+                            <label for="Credit_Utilization_Ratio">Credit Utilization Ratio:</label>
+                            <input type="text" id="Credit_Utilization_Ratio" name="Credit_Utilization_Ratio" required>
+                        </div>
+                        <div class="group">
+                            <label for="Total_EMI_per_month">Total EMI per Month:</label>
+                            <input type="text" id="Total_EMI_per_month" name="Total_EMI_per_month" required>
+                        </div>
+                        <div class="group">
+                            <label for="Amount_invested_monthly">Amount Invested Monthly:</label>
+                            <input type="text" id="Amount_invested_monthly" name="Amount_invested_monthly" required>
+                        </div>
+                        <div class="group">
+                            <label for="Monthly_Balance">Monthly Balance:</label>
+                            <input type="text" id="Monthly_Balance" name="Monthly_Balance" required>
+                        </div>
+                        <div class="submit">
+                            <input type="submit" value="Predict">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
