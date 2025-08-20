@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("{{ url_for('static', filename='heart_background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .stroke-message {
+            font-size: 28px;
+            color: #d9534f;
+            margin-top: 20px;
+        }
+        .stroke-message i {
+            font-size: 48px;
+            color: #d9534f;
+        }
+        .stroke-message h2 {
+            margin-top: 10px;
+        }
+
+        .safe-message {
+            font-size: 28px;
+            color: #28a745;
+            margin-top: 20px;
+        }
+        .safe-message i {
+            font-size: 48px;
+            color: #28a745;
+        }
+        .safe-message h2 {
+            margin-top: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 24px;
+            background: #0275d8;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        {% if prediction == 'Stroke' %}
+            <div class="stroke-message">
+                <i class="fas fa-triangle-exclamation"></i>
+                <h2>Stroke Detected!</h2>
+            </div>
+        {% else %}
+            <div class="safe-message">
+                <i class="fas fa-shield-heart"></i>
+                <h2>No Stroke Detected!</h2>
+            </div>
+        {% endif %}
+        <a href="/">Predict Again</a>
+    </div>
+</body>
+</html>

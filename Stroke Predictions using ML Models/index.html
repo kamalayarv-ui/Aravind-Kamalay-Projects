@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Stroke Prediction</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: url("{{ url_for('static', filename='heart_background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.92);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 1s ease;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .header-img {
+            display: block;
+            margin: 0 auto 10px;
+            width: 80px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #d62828;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            font-size: 14px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 14px;
+            background: #d62828;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background: #a61b1b;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 30px;
+            }
+            input[type="text"], select {
+                font-size: 13px;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Heart Stroke Prediction</h1>
+        <form action="/predict" method="post">
+            <label>🧓 Age</label>
+            <input type="text" name="age" required>
+
+            <label>💉 Hypertension (0 or 1)</label>
+            <input type="text" name="hypertension" required>
+
+            <label>❤️‍🩹 Heart Disease (0 or 1)</label>
+            <input type="text" name="heart_disease" required>
+
+            <label>🩸 Avg Glucose Level</label>
+            <input type="text" name="avg_glucose_level" required>
+
+            <label>⚖️ BMI</label>
+            <input type="text" name="bmi" required>
+
+            <label>🚻 Gender</label>
+            <select name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label>💍 Ever Married</label>
+            <select name="ever_married" required>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>💼 Work Type</label>
+            <select name="work_type" required>
+                <option value="Private">Private</option>
+                <option value="Self-employed">Self-employed</option>
+                <option value="Govt_job">Govt Job</option>
+                <option value="children">Children</option>
+                <option value="Never_worked">Never Worked</option>
+            </select>
+
+            <label>🚬 Smoking Status</label>
+            <select name="smoking_status" required>
+                <option value="never smoked">Never Smoked</option>
+                <option value="formerly smoked">Formerly Smoked</option>
+                <option value="smokes">Smokes</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+
+            <button type="submit" class="submit-button">Predict Stroke Risk</button>
+        </form>
+    </div>
+</body>
+</html>
